@@ -495,7 +495,7 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
     <span class="bday-em rise">🏁</span>
     <p class="kicker rise">25 · 10 · 2026 — lights out</p>
     <h1 class="h1 rise">happy<br>birthday<br><span class="grad">akeel</span></h1>
-    <p class="body rise" style="margin-top:16px;max-width:310px">Your mate built you a website instead of buying a card. <em>Questionable use of a weekend. Correct use of a weekend.</em></p>
+    <p class="body rise" style="margin-top:16px;max-width:310px"><strong>I</strong> built you a website instead of buying you a card. <em>Questionable use of a weekend. Correct use of a weekend.</em></p>
     <p class="tap rise">tap next · turn your volume up</p>
   </section>
 
@@ -504,15 +504,15 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
     <p class="kicker rise">page one of two with actual words</p>
     <h2 class="h2 rise">so.<br><span class="grad">you're older.</span></h2>
     <div class="rise">
-      <p class="body">Another lap in. Same engine, more mileage, somehow still arguing about tyre strategy at midnight.</p>
-      <p class="body"><strong>Vaishnav (me) wasn't so sure of your age.</strong> I thought about it, did some maths, considered asking, decided that was worse, and committed to a number with the confidence of a man who has not checked.</p>
+      <p class="body">Another year in. Same person, more mileage, still arguing about something at midnight.</p>
+      <p class="body"><strong>Vaishnav (me) wasn't so sure of your age.</strong> I thought about it. I did some maths. I considered just asking you, decided that was somehow worse, and committed to a number instead.</p>
       <p class="body"><em>The exact figure is on the calendar page. Brace yourself.</em></p>
     </div>
   </section>
 
 
   <section class="slide" id="s4">
-    <p class="kicker rise" style="text-align:center;width:100%">your own personal solar system</p>
+    <p class="kicker rise" style="text-align:center;width:100%">here are some of our most embarrassing pics together</p>
     <h2 class="h2 rise" style="text-align:center;width:100%;margin-bottom:4px">the <span class="grad">akeel</span> constellation</h2>
     <div class="orbit-stage rise">
       <canvas id="stars"></canvas>
@@ -528,7 +528,7 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
       <div class="sky-head rise">
         <span id="skycount">0</span>
       </div>
-      <p class="sky-sub rise">times <span class="grad">we</span> did academic things together</p>
+      <p class="sky-sub rise">times <span class="grad">we</span> did academic things together<br><span style="font:400 11px/1.5 var(--mono);letter-spacing:.1em;color:var(--muted)">(verstappen's number. the only number that matters.)</span></p>
       <div id="skywrap" class="rise"><canvas id="sky"></canvas></div>
       <button id="rbtn" class="rise">show me the receipts →</button>
       <ul id="receipts"></ul>
@@ -586,6 +586,7 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
     <div class="scroll">
       <p class="kicker rise">official age determination ceremony</p>
       <h2 class="h2 rise">pick the <span class="grad">big day</span></h2>
+      <p class="body rise" style="margin-top:-4px">I did not know your actual age. We think you're turning <strong>15</strong>.</p>
       <div class="cal rise">
         <div class="cal-top"><h4>October 2026</h4><span>tap the 25th</span></div>
         <div class="cal-grid" id="calgrid"></div>
@@ -738,7 +739,7 @@ paint();
 /* ══════════════════ S1 · FLOATING EMOJI ══════════════════ */
 (function(){
   const host = $("#floaters");
-  const pool = ["🎀","💕","🎂","✨","🩷","🧁","🎈","🪩","🌸","💅","👑","🫧"];
+  const pool = ["🏎️","🏁","🥤","🏏","🏆","🤖","⚙️","📚","👟","💙","⚡","🛞"];
   const frag = document.createDocumentFragment();
   for (let i=0;i<16;i++){
     const s = document.createElement("span");
@@ -757,7 +758,7 @@ paint();
 /* S7 · Red Bull + F1 — see the three.js block near the end of this file. */
 
 /* ══════════════════ S4 · CONSTELLATION ══════════════════
-   A particle sphere (canvas 2D) with her photos orbiting inside it on a
+   A particle sphere (canvas 2D) with the photos orbiting inside it on a
    CSS-3D ring. Both are driven by ONE yaw value, so they read as a single
    scene. Deliberately not WebGL: ~3 KB and a rock-solid 60fps on a phone,
    where a three.js build would be ~600 KB and fights the mobile GPU.
@@ -956,6 +957,7 @@ paint();
     return ((t^(t>>>14))>>>0)/4294967296; }; }
 
   const cells = [];
+  const SHOWN_TOTAL = 33;      // Verstappen's number, not the generated sum
   let TOTAL = 0, MAXC = 0;
   (function build(){
     const r = rng(1310);
@@ -1074,9 +1076,9 @@ paint();
     if (!cStart) cStart = now;
     const el = now - cStart;
     if (t < 1) t = clamp(el / (REDUCED ? 1 : 1500) - 0.18, 0, 1);
-    countEl.textContent = Math.round(TOTAL * easeOutCubic(el/(REDUCED?1:1400))).toLocaleString();
+    countEl.textContent = Math.round(SHOWN_TOTAL * easeOutCubic(el/(REDUCED?1:1400))).toLocaleString();
     draw();
-    if (t >= 1 && el > 1700){ live = false; countEl.textContent = TOTAL.toLocaleString(); }
+    if (t >= 1 && el > 1700){ live = false; countEl.textContent = SHOWN_TOTAL.toLocaleString(); }
   }
 
   s5.addEventListener("slideenter", ()=>{
@@ -1090,18 +1092,15 @@ paint();
 
   /* the receipts */
   const RECEIPTS = [
-    ["01","olympiad prep. neither of us knew what a locus was."],
+    ["01","olympiad prep in class."],
     ["02","robotics. the robot did not move. we blamed the floor."],
-    ["03","that exam we 'definitely did not need to study for'."],
-    ["04","revising by explaining it wrong to each other, loudly."],
-    ["05","past papers at an hour papers should not be attempted."],
-    ["06","arguing over an answer. you were right. once."],
-    ["07","building the thing the night before it was due."],
-    ["08","a study session that became a two-hour F1 debate."],
-    ["09","the group project we carried. allegedly."],
-    ["10","learning it properly five minutes before it mattered."],
-    ["11","marking each other's work far too generously."],
-    ["12","and the rest. the archive is academically significant."]
+    ["03","the exam where we found Mr Parbhoo's past paper."],
+    ["04","and when we found it, Aiden fell."],
+    ["05","building the robots the day before the competition."],
+    ["06","the group project we carried."],
+    ["07","marking each other's work far too generously."],
+    ["08","arguing over an answer. you were right. once."],
+    ["09","noughts and crosses. i kept beating you. repeatedly."]
   ];
   rbtn.addEventListener("click", ()=>{
     rbtn.classList.add("gone");
@@ -1262,7 +1261,7 @@ paint();
   $("#plprev").addEventListener("click", ()=> goTo(active-1));
   $("#plnext").addEventListener("click", ()=> goTo(active+1));
 
-  // gentle autoplay, pauses while she's touching it
+  // gentle autoplay, pauses while it is being touched
   setInterval(()=>{
     if (!live || drag || document.hidden) return;
     if (performance.now() - lastTouch < 4600) return;
@@ -1302,11 +1301,11 @@ paint();
     b.addEventListener("click", ()=>{
       if (d === 25){
         popped = true;
-        say.innerHTML = '<span class="big">HAPPY BIRTHDAY 🏁</span>'
-          + 'Sunday, 25 October 2026. <b>Vaishnav (me) did not actually know your age.</b> '
-          + 'I thought about it, did some maths, gave up, and decided the number matters less than the fact that '
-          + 'you have put up with me through every olympiad, every robotics build and every exam season. '
-          + '<br><br>Thanks for all of it. Have a great one. 🏎️';
+        say.innerHTML = '<span class="big">HAPPY 15TH 🏁</span>'
+          + 'Sunday, 25 October 2026. <b>Vaishnav (me) wasn\'t so sure about your age.</b> '
+          + 'I thought about it, did some maths, gave up, and committed to <b>15</b> with the confidence '
+          + 'of someone who has not checked. '
+          + '<br><br>Thanks for all of it — the olympiads, the robotics, every exam season. Have a great one. 🏎️💙';
         say.scrollIntoView({behavior:"smooth", block:"nearest"});
       } else {
         b.classList.add("poked");
@@ -1321,8 +1320,8 @@ paint();
 (function(){
   const btn = $("#bigbtn"), cv = $("#boom"), layer = $("#balloonlayer"), tally = $("#bcount");
   const ctx = cv.getContext("2d");
-  const EMO = ["🎀","🎂","🎈","🩷","💕","✨","🦄","🧁","🍰","🎉","🪩","💖","🌸","🫧","👑","💅","🎊","💝","🌷","🪅"];
-  const BCOL = ["#3b82f6","#60a5fa","#bfdbfe","#22d3ee","#fbbf24","#1d4ed8","#ff6fb5"];
+  const EMO = ["🏎️","🏁","💙","🏆","🥤","⚡","🏏","👟","🤖","⚙️","🛞","🚥","🥇","📚","🔵","💨"];
+  const BCOL = ["#3b82f6","#60a5fa","#bfdbfe","#22d3ee","#1d4ed8","#e8edf5","#d3142c"];
 
   let parts = [], raf = 0, W = 0, H = 0, dpr = 1, presses = 0;
 
@@ -1387,7 +1386,7 @@ paint();
     }
   }
 
-  const QUIPS = ["again.","AGAIN.","okay she's going feral","the server is fine. probably.","aura: immeasurable","stop. (don't)"];
+  const QUIPS = ["again.","AGAIN.","okay you're locked in","the server is fine. probably.","full send.","box, box. (don't)"];
   btn.addEventListener("click", ()=>{
     presses++;
     const r = btn.getBoundingClientRect();
@@ -1397,7 +1396,7 @@ paint();
     setTimeout(()=> burst(cx + r.width*0.4, cy, 48), 215);
     setTimeout(()=> burst(W*0.5, H*0.82, 60), 330);
     balloons(16);
-    tally.textContent = presses === 1 ? "🎀 happy birthday akeel 🏁"
+    tally.textContent = presses === 1 ? "🏁 happy birthday akeel 🏁"
                                       : presses + " presses · " + QUIPS[Math.min(presses-2, QUIPS.length-1)];
     if (navigator.vibrate) { try { navigator.vibrate([18, 36, 18]); } catch(_){} }
   });
