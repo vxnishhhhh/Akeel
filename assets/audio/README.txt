@@ -4,7 +4,7 @@ MUSIC — one file, then it works
 The site is wired for a fixed, looping, quiet (22% volume) background
 track that plays across every slide and survives the phone locking.
 
-The track is NOT included yet.
+The track IS in place: track.mp3, 34.1s, stereo, 128 kbps, 536 KB.
 
 TO ADD IT:
   Put the file in THIS folder, named exactly:
